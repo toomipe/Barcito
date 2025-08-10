@@ -1,0 +1,88 @@
+@use "../../styles/variables.scss";
+
+.home-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.2rem;
+    color: variables.$color-principal; 
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #777;
+  }
+}
+
+.gallery {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 40px;
+
+  img {
+    width: 30%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+
+  .contact, .payment {
+    flex: 1;
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: variables.$color-principal; 
+      border-bottom: 2px solid #6a1b9a;
+      padding-bottom: 5px;
+    }
+
+    p, ul {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .gallery {
+    flex-direction: column;
+    img {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+
+  .info {
+    flex-direction: column;
+    gap: 25px;
+  }
+}

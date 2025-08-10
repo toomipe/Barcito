@@ -1,0 +1,6 @@
+@barcito_HostAddress = http://localhost:5196
+
+GET {{barcito_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

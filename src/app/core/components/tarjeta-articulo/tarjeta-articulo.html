@@ -1,0 +1,12 @@
+<div id="divArticulo" (click)="navegar(articulo.articuloID)">
+  <div id="contenidoArticulo">
+    <div id="imagenArticulo">
+      <img [src]="articulo.urlImagen" alt="" />
+    </div>
+    <div id="datosArticulo">
+      <h3>{{ articulo.nombre }}</h3>
+      <h5>{{articulo.descripcion}}</h5>
+      <h1>${{ articulo.precio }}</h1>
+    </div>
+  </div>
+</div>
