@@ -3,24 +3,52 @@
   "WorkspaceRootPath": "C:\\barcito\\backend\\barcito\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\persistencia\\conexi\u00F3nmysql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:persistencia\\conexi\u00F3nmysql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\controllers\\cuentacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:controllers\\cuentacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\logica\\cuenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:logica\\cuenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\logica\\gestordecuentas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:logica\\gestordecuentas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\logica\\detallecuenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:logica\\detallecuenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\persistencia\\detallecuentarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:persistencia\\detallecuentarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\persistencia\\cuentarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:persistencia\\cuentarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\persistencia\\gestorbasededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:persistencia\\gestorbasededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\persistencia\\articulorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:persistencia\\articulorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\logica\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:logica\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\logica\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:logica\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\persistencia\\conexi\u00F3nmysql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:persistencia\\conexi\u00F3nmysql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\logica\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|solutionrelative:logica\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6CE6B011-0A60-4D9A-A0B2-6872729E84FD}|barcito.csproj|c:\\barcito\\backend\\barcito\\controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -71,97 +99,110 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Conexi\u00F3nMySQL.cs",
-              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\Conexi\u00F3nMySQL.cs",
-              "RelativeDocumentMoniker": "Persistencia\\Conexi\u00F3nMySQL.cs",
-              "ToolTip": "C:\\barcito\\backend\\barcito\\Persistencia\\Conexi\u00F3nMySQL.cs",
-              "RelativeToolTip": "Persistencia\\Conexi\u00F3nMySQL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAmAAAAAAAAAA==",
+              "Title": "CuentaController.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Controllers\\CuentaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CuentaController.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Controllers\\CuentaController.cs",
+              "RelativeToolTip": "Controllers\\CuentaController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAcwCIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T03:25:01.891Z",
+              "WhenOpened": "2025-08-12T02:41:07.306Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ArticuloRepository.cs",
-              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\ArticuloRepository.cs",
-              "RelativeDocumentMoniker": "Persistencia\\ArticuloRepository.cs",
-              "ToolTip": "C:\\barcito\\backend\\barcito\\Persistencia\\ArticuloRepository.cs",
-              "RelativeToolTip": "Persistencia\\ArticuloRepository.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAiwIUAAAA1AAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "GestorBaseDeDatos.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\GestorBaseDeDatos.cs",
+              "RelativeDocumentMoniker": "Persistencia\\GestorBaseDeDatos.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Persistencia\\GestorBaseDeDatos.cs",
+              "RelativeToolTip": "Persistencia\\GestorBaseDeDatos.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAIwBYAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T03:01:45.307Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CategoriaController.cs",
-              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Controllers\\CategoriaController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoriaController.cs",
-              "ToolTip": "C:\\barcito\\backend\\barcito\\Controllers\\CategoriaController.cs",
-              "RelativeToolTip": "Controllers\\CategoriaController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAowBEAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T03:39:04.308Z",
+              "WhenOpened": "2025-08-12T02:07:16.281Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "CategoriaRepository.cs",
-              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\CategoriaRepository.cs",
-              "RelativeDocumentMoniker": "Persistencia\\CategoriaRepository.cs",
-              "ToolTip": "C:\\barcito\\backend\\barcito\\Persistencia\\CategoriaRepository.cs",
-              "RelativeToolTip": "Persistencia\\CategoriaRepository.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAADwv2MAAAADAAAAAAAAAA==",
+              "Title": "CuentaRepository.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\CuentaRepository.cs",
+              "RelativeDocumentMoniker": "Persistencia\\CuentaRepository.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Persistencia\\CuentaRepository.cs",
+              "RelativeToolTip": "Persistencia\\CuentaRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAywBMAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-09T20:51:14.631Z",
+              "WhenOpened": "2025-08-12T02:05:16.654Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\barcito\\backend\\barcito\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "DetalleCuentaRepository.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\DetalleCuentaRepository.cs",
+              "RelativeDocumentMoniker": "Persistencia\\DetalleCuentaRepository.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Persistencia\\DetalleCuentaRepository.cs",
+              "RelativeToolTip": "Persistencia\\DetalleCuentaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T02:32:04.557Z",
+              "WhenOpened": "2025-08-12T01:55:10.678Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\barcito\\backend\\barcito\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-08T04:13:56.128Z",
+              "DocumentIndex": 3,
+              "Title": "DetalleCuenta.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Logica\\DetalleCuenta.cs",
+              "RelativeDocumentMoniker": "Logica\\DetalleCuenta.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Logica\\DetalleCuenta.cs",
+              "RelativeToolTip": "Logica\\DetalleCuenta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T01:49:22.219Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ArticuloController.cs",
               "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Controllers\\ArticuloController.cs",
               "RelativeDocumentMoniker": "Controllers\\ArticuloController.cs",
               "ToolTip": "C:\\barcito\\backend\\barcito\\Controllers\\ArticuloController.cs",
               "RelativeToolTip": "Controllers\\ArticuloController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAwB8AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-08T16:16:09.831Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "Cuenta.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Logica\\Cuenta.cs",
+              "RelativeDocumentMoniker": "Logica\\Cuenta.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Logica\\Cuenta.cs",
+              "RelativeToolTip": "Logica\\Cuenta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T01:49:00.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GestorDeCuentas.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Logica\\GestorDeCuentas.cs",
+              "RelativeDocumentMoniker": "Logica\\GestorDeCuentas.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Logica\\GestorDeCuentas.cs",
+              "RelativeToolTip": "Logica\\GestorDeCuentas.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T02:34:59.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Categoria.cs",
               "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Logica\\Categoria.cs",
               "RelativeDocumentMoniker": "Logica\\Categoria.cs",
@@ -174,7 +215,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
+              "Title": "Conexi\u00F3nMySQL.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\Conexi\u00F3nMySQL.cs",
+              "RelativeDocumentMoniker": "Persistencia\\Conexi\u00F3nMySQL.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Persistencia\\Conexi\u00F3nMySQL.cs",
+              "RelativeToolTip": "Persistencia\\Conexi\u00F3nMySQL.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T03:25:01.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T02:32:04.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CategoriaRepository.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\CategoriaRepository.cs",
+              "RelativeDocumentMoniker": "Persistencia\\CategoriaRepository.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Persistencia\\CategoriaRepository.cs",
+              "RelativeToolTip": "Persistencia\\CategoriaRepository.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwv2MAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-09T20:51:14.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ArticuloRepository.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\ArticuloRepository.cs",
+              "RelativeDocumentMoniker": "Persistencia\\ArticuloRepository.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Persistencia\\ArticuloRepository.cs",
+              "RelativeToolTip": "Persistencia\\ArticuloRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T03:01:45.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CategoriaController.cs",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Controllers\\CategoriaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoriaController.cs",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\Controllers\\CategoriaController.cs",
+              "RelativeToolTip": "Controllers\\CategoriaController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAowBEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T03:39:04.308Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\barcito\\backend\\barcito\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\barcito\\backend\\barcito\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-08T04:13:56.128Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Articulo.cs",
               "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Logica\\Articulo.cs",
               "RelativeDocumentMoniker": "Logica\\Articulo.cs",
@@ -182,12 +297,11 @@
               "RelativeToolTip": "Logica\\Articulo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T03:03:32.626Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T03:03:32.626Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 14,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\barcito\\backend\\barcito\\Persistencia\\IRepository.cs",
               "RelativeDocumentMoniker": "Persistencia\\IRepository.cs",
@@ -195,8 +309,7 @@
               "RelativeToolTip": "Persistencia\\IRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T03:00:56.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T03:00:56.804Z"
             }
           ]
         }

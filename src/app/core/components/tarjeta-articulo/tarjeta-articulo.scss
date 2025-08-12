@@ -8,31 +8,50 @@
   cursor: pointer;
 }
 
-/* Contenedor que alinea imagen y datos lado a lado */
 #contenidoArticulo {
   display: flex;
-  align-items: center; /* centra verticalmente */
+  align-items: center;
 }
 
-/* Imagen a la izquierda */
 #imagenArticulo img {
   width: 75px;
   height: 75px;
   border: 4px solid #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  margin-right: 12px; /* separa de los datos */
+  margin-right: 12px;
 }
 
-/* Contenedor de nombre y precio */
+#cantidad {
+  display: flex; 
+  align-items: center; 
+  gap: 10px;
+  justify-content: flex-end;
+  button {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    align-items: auto;
+  }
+  span {
+    color: #fff;
+  }
+}
+
+#abajo {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+}
+
 #datosArticulo {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 75px; /* igual altura que la imagen */
-  flex: 1; /* ocupa todo el espacio restante */
+  height: 75px;
+  flex: 1;
 }
 
-/* Nombre arriba, alineado a la izquierda */
 #datosArticulo h3 {
   margin: 0;
   font-weight: bold;
@@ -48,11 +67,10 @@
   text-align: left;
 }
 
-/* Precio abajo, alineado a la izquierda */
-#datosArticulo h1 {
+#precio {
   margin: 0;
   font-size: 18px;
   font-weight: normal;
-  color: #ffd700; /* color dorado */
+  color: #ffd700;
   text-align: left;
 }

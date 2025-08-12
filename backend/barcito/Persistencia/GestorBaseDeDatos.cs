@@ -81,19 +81,17 @@ namespace barcito.Persistencia
             {
                 using (MySqlConnection connection = conexiónMySQL.GetConnection())
                 {
-                    // Asegúrate de que la conexión esté abierta
                     if (connection.State != System.Data.ConnectionState.Open)
                     {
                         connection.Open();
                     }
 
                     MySqlCommand miComando = new MySqlCommand(QUERY, connection);
-                    miComando.ExecuteNonQuery(); // Ejecutar el query
+                    miComando.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                // Puedes agregar un logging o manejo más detallado del error aquí
                 Console.WriteLine("Error al crear la base de datos y las tablas: " + ex.Message);
                 throw;
             }

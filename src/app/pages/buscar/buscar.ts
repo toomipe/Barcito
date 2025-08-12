@@ -5,6 +5,8 @@ import { TarjetaCategoria } from '../../core/components/tarjeta-categoria/tarjet
 import { CategoriaService } from '../../core/services/categoriaService';
 import { Categoria } from '../../core/interfaces/categoria';
 import { CommonModule } from '@angular/common';
+import { DeviceService } from '../../core/services/deviceService';
+import { CuentaService } from '../../core/services/cuentaService';
 
 
 @Component({
@@ -17,18 +19,29 @@ import { CommonModule } from '@angular/common';
 export class Buscar {
 
   constructor(private router: Router) {}
-  
+
+  deviceService = inject(DeviceService)
   cdr = inject(ChangeDetectorRef);
   headerService = inject(HeaderService);
   categoriaService = inject(CategoriaService);
+  cuentaService = inject(CuentaService);
+  cuentaRegistrada:boolean = false;
   categorias:Categoria[] = [];
+  nombre:string = "tomas";
 
-  ngOnInit(): void {
-    console.log('ngOnInit');
-    this.headerService.settitulo("Buscar");
+  async ngOnInit(){
+    const id = this.deviceService.getDeviceId();
+    this.headerService.setnombre(this.nombre);
+    console.log('ID del dispositivo:', id);
+
+    // generacion de cuenta
+    this.cuentaRegistrada = await this.cuentaService.nuevaCuenta(this.nombre, id);
+    console.log(this.cuentaRegistrada, "<-------");
+
+    this.headerService.settitulo("Realizar Pedido");
     this.categoriaService.getAll().subscribe(res => {
       this.categorias = res;
-      this.cdr.detectChanges(); // Forzar actualización
+      this.cdr.detectChanges(); // forzar actualización
       })
   }
 

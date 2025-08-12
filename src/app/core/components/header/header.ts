@@ -12,5 +12,6 @@ import { HeaderService } from '../../services/headerService';
 })
 export class Header {
   private headerService = inject(HeaderService);
+  nombre$ = this.headerService.nombre$;
   titulo$ = this.headerService.titulo$;
 }
