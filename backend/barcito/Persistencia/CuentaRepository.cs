@@ -13,7 +13,7 @@ namespace barcito.Persistencia
       conexiónMySQL = new ConexiónMySQL();
     }
 
-    public void Save(Cuenta cuenta)
+    public int Save(Cuenta cuenta)
     {
       string QUERY = "INSERT INTO Cuenta (nombre, fecha, idDevice, pagado) " +
                       "VALUES (@nombre, @fecha, @idDevice, @pagado)";
@@ -26,6 +26,7 @@ namespace barcito.Persistencia
       miComando.Parameters.AddWithValue("@pagado", cuenta.Pagado ? 1 : 0);
 
       miComando.ExecuteNonQuery();
+      return (int)miComando.LastInsertedId;
     }
 
     public Cuenta FindById(int idCuenta)
@@ -79,6 +80,36 @@ namespace barcito.Persistencia
       mReader.Close();
       return cuentas;
     }
+
+
+    public bool NotReplicated(string nombre, string device)
+    {
+      string QUERY = "SELECT * FROM Cuenta WHERE nombre = '" + nombre + "' AND idDevice = '" + device + "' ";
+      Console.WriteLine(QUERY);
+      MySqlCommand miComando = new MySqlCommand(QUERY);
+      miComando.Connection = conexiónMySQL.GetConnection();
+
+      MySqlDataReader mReader = miComando.ExecuteReader();
+      List<Cuenta> cuentas = new List<Cuenta>();
+
+      while (mReader.Read())
+      {
+        Cuenta cuenta = new Cuenta
+        {
+          IdCuenta = mReader.GetInt32("idCuenta"),
+          Nombre = mReader.GetString("nombre"),
+          Fecha = mReader.GetDateTime("fecha"),
+          IdDevice = mReader.GetString("idDevice"),
+          Pagado = mReader.GetInt32("pagado") == 1
+        };
+        cuentas.Add(cuenta);
+      }
+
+      mReader.Close();
+
+      return cuentas.Count == 0;
+    }
+
 
     public bool Update(Cuenta cuenta)
     {

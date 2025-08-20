@@ -24,11 +24,11 @@ namespace barcito.Persistencia
       miComando.Parameters.AddWithValue("@idArticulo", detalle.IdArticulo);
       miComando.Parameters.AddWithValue("@cantidad", detalle.Cantidad);
       miComando.Parameters.AddWithValue("@detalle", detalle.Detalle ?? "");
-      miComando.Parameters.AddWithValue("@descuento", detalle.Descuento);
-
+      miComando.Parameters.AddWithValue("@descuento", detalle.Descuento == default(decimal) ? 0 : detalle.Descuento);
+      Console.WriteLine(QUERY);
       miComando.ExecuteNonQuery();
     }
-
+        
     public DetalleCuenta FindById(int idDetalleCuenta)
     {
       string QUERY = "SELECT * FROM DetalleCuenta WHERE idDetalleCuenta = @idDetalleCuenta";
@@ -101,22 +101,24 @@ namespace barcito.Persistencia
       return filasAfectadas > 0;
     }
 
-    public void Delete(int idDetalleCuenta)
+    public void Delete(int idCuenta)
     {
-      string QUERY = "DELETE FROM DetalleCuenta WHERE idDetalleCuenta = @idDetalleCuenta";
+      string QUERY = "DELETE FROM DetalleCuenta WHERE idCuenta = @idCuenta";
       MySqlCommand miComando = new MySqlCommand(QUERY);
       miComando.Connection = conexiónMySQL.GetConnection();
 
-      miComando.Parameters.AddWithValue("@idDetalleCuenta", idDetalleCuenta);
+      miComando.Parameters.AddWithValue("@idDetalleCuenta", idCuenta);
       miComando.ExecuteNonQuery();
     }
 
     public List<DetalleCuenta> FindByCuentaId(int idCuenta)
     {
-      string QUERY = "SELECT * FROM DetalleCuenta WHERE idCuenta = @idCuenta";
+      string QUERY = "SELECT * FROM detallecuenta WHERE idCuenta = @idCuenta";
       MySqlCommand miComando = new MySqlCommand(QUERY);
       miComando.Connection = conexiónMySQL.GetConnection();
       miComando.Parameters.AddWithValue("@idCuenta", idCuenta);
+
+      Console.WriteLine(QUERY);
 
       MySqlDataReader mReader = miComando.ExecuteReader();
       List<DetalleCuenta> detalles = new List<DetalleCuenta>();
@@ -125,12 +127,12 @@ namespace barcito.Persistencia
       {
         DetalleCuenta detalle = new DetalleCuenta
         {
-          IdDetalleCuenta = mReader.GetInt32("idDetalleCuenta"),
-          IdCuenta = mReader.GetInt32("idCuenta"),
-          IdArticulo = mReader.GetInt32("idArticulo"),
-          Cantidad = mReader.GetInt32("cantidad"),
+          IdDetalleCuenta = mReader.IsDBNull(mReader.GetOrdinal("idDetalleCuenta")) ? 0 : mReader.GetInt32("idDetalleCuenta"),
+          IdCuenta = mReader.IsDBNull(mReader.GetOrdinal("idCuenta")) ? 0 : mReader.GetInt32("idCuenta"),
+          IdArticulo = mReader.IsDBNull(mReader.GetOrdinal("idArticulo")) ? 0 : mReader.GetInt32("idArticulo"),
+          Cantidad = mReader.IsDBNull(mReader.GetOrdinal("cantidad")) ? 0 : mReader.GetInt32("cantidad"),
           Detalle = mReader.IsDBNull(mReader.GetOrdinal("detalle")) ? null : mReader.GetString("detalle"),
-          Descuento = mReader.GetDecimal("descuento")
+          Descuento = mReader.IsDBNull(mReader.GetOrdinal("descuento")) ? 0 : mReader.GetDecimal("descuento")
         };
         detalles.Add(detalle);
       }

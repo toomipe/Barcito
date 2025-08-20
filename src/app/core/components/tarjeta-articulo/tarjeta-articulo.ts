@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Articulo } from '../../interfaces/articulo';
 import { BehaviorSubject } from 'rxjs';
@@ -16,6 +16,8 @@ export class TarjetaArticulo {
   private _n = new BehaviorSubject<number>(0);
   n$ = this._n.asObservable();
 
+  @Output() cantidadChange = new EventEmitter<{ id: number, cantidad: number }>();
+
   constructor(private router: Router){ }
 
   navegar(articuloID: number) {
@@ -30,6 +32,7 @@ export class TarjetaArticulo {
     if (val > -1 && val < 26) {
       const nuevoValor = val;
       this._n.next(nuevoValor);
+      this.cantidadChange.emit({ id: this.articulo.articuloID, cantidad: val });
     }
   }
 }

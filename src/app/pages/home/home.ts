@@ -4,6 +4,8 @@ import { HeaderService } from '../../core/services/headerService';
 import { CommonModule } from '@angular/common';
 import { CategoriaService } from '../../core/services/categoriaService';
 import { CategoriaC } from '../categoria/categoria';
+import { NombreUsuario } from '../../core/components/nombre-usuario/nombre-usuario';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   standalone: true,
@@ -18,13 +20,23 @@ export class Home implements OnInit{
   headerService = inject(HeaderService);
 
   ngOnInit(): void {
-    this.headerService.settitulo("Inicio");
+    this.headerService.settitulo("Tu barcito");
+    if (!this.headerService.getnombre()) {
+      this.abrirModal();
+      
+      console.log(this.headerService.getnombre());
+    }
+    
   }
   
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   irAlDashboard() {
     this.router.navigate(['/dashboard']);
+  }
+
+  abrirModal() {
+    this.dialog.open(NombreUsuario);
   }
 
     nombreBar = 'Tu barcito';

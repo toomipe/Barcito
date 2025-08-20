@@ -7,19 +7,32 @@ import { Cuenta } from '../interfaces/cuenta';
 })
 export class CuentaService {
   constructor(private http: HttpClient) {}
-  
-  async nuevaCuenta(nombre: string, id: string): Promise<boolean> {
-  const cuenta: Cuenta = { nombre: nombre, idDevice: id };
-  console.log(JSON.stringify(cuenta));
+  idCuenta?: number;
 
-  try {
-    await this.http.post<void>("https://localhost:7031/api/Cuenta", cuenta).toPromise();
-    console.log('Cuenta creada con éxito');
-    return true;
-  } catch (err) {
-    console.error('Error al crear cuenta', err);
-    return false;
+  async nuevaCuenta(nombre: string, id: string): Promise<boolean> {
+    const cuenta: Cuenta = { nombre: nombre, idDevice: id };
+    console.log(JSON.stringify(cuenta));
+
+    try {
+      console.log('andiamo por aca');
+      this.idCuenta = await this.http.post<number>("https://localhost:7031/api/Cuenta", cuenta).toPromise();
+
+      // es en donde se devuelve la consulta
+      if (this.idCuenta === undefined) throw new Error("No se recibió idCuenta");
+      console.log('Cuenta creada con éxito', cuenta);
+      return true;
+    } catch (err) {
+      console.error('Error al crear cuenta', err);
+      return false;
+    }
   }
-}
+
+  getIdCuenta() {
+    if (this.idCuenta === undefined) {
+      console.log('fijate por aca', this.idCuenta);
+      return -1;
+    }
+    return this.idCuenta;
+  }
 
 }

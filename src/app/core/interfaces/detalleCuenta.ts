@@ -2,12 +2,12 @@ import { Cuenta } from "./cuenta";
 import { Articulo } from "./articulo";
 
 export interface DetalleCuenta {
-    idDetalleCuenta: number,
+    idDetalleCuenta?: number,
     idCuenta: number,
-    cuenta: Cuenta,
+    cuenta?: Cuenta,
     idArticulo: number,
-    articulo: Articulo,
+    articulo?: Articulo,
     cantidad: number,
-    detalle: string,
-    descuento: number
+    detalle?: string,
+    descuento?: number
 }

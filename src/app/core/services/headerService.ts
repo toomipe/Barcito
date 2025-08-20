@@ -9,7 +9,7 @@ export class HeaderService {
   
   private _titulo = new BehaviorSubject<string>('Título');
   titulo$ = this._titulo.asObservable();
-  private _nombre = new BehaviorSubject<string>('a');
+  public _nombre = new BehaviorSubject<string>('');
   nombre$ = this._nombre.pipe(
   map(nombre => `A cuenta de: ${nombre}`)
 );
@@ -26,4 +26,10 @@ export class HeaderService {
   setnombre(nombre: string) {
     this._nombre.next(nombre);
   }
+
+  getnombre() {
+  console.log('el nombre es: ', this._nombre.getValue());
+  return this._nombre.getValue();
+  }
+
 }

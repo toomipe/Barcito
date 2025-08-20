@@ -5,12 +5,12 @@ namespace barcito.Logica
     public int IdDetalleCuenta { get; set; }
 
     public int IdCuenta { get; set; }
-    public Cuenta Cuenta { get; set; }
+    public Cuenta? Cuenta { get; set; }
 
     public int IdArticulo { get; set; }
-    public bool Pagado { get; set; } = false;
+    public bool? Pagado { get; set; } = false;
     public int Cantidad { get; set; }
-    public string Detalle { get; set; }
-    public decimal Descuento { get; set; }
+    public string? Detalle { get; set; }
+    public decimal? Descuento { get; set; }
   }
 }

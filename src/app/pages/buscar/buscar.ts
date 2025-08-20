@@ -27,16 +27,11 @@ export class Buscar {
   cuentaService = inject(CuentaService);
   cuentaRegistrada:boolean = false;
   categorias:Categoria[] = [];
-  nombre:string = "tomas";
 
   async ngOnInit(){
-    const id = this.deviceService.getDeviceId();
-    this.headerService.setnombre(this.nombre);
-    console.log('ID del dispositivo:', id);
 
-    // generacion de cuenta
-    this.cuentaRegistrada = await this.cuentaService.nuevaCuenta(this.nombre, id);
-    console.log(this.cuentaRegistrada, "<-------");
+    
+    
 
     this.headerService.settitulo("Realizar Pedido");
     this.categoriaService.getAll().subscribe(res => {

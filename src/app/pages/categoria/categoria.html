@@ -1,6 +1,6 @@
 <div id="categoria-container">
     <ng-container *ngIf="articulos.length > 0; else loading">
-        <app-tarjeta-articulo *ngFor="let articulo of articulos" [articulo]="articulo"></app-tarjeta-articulo>
+        <app-tarjeta-articulo *ngFor="let articulo of articulos" [articulo]="articulo" (cantidadChange)="actualizarPedido($event)">></app-tarjeta-articulo>
     </ng-container>
     <ng-template #loading>
         <div class="loading-container">
@@ -8,4 +8,11 @@
             <p>Cargando categorías...</p>
         </div>
     </ng-template>
+
+    <!--enviar al carrito-->
+    <div class="burbuja" (click)="enviarCarrito()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="#eee">
+        <path d="M12 4l-8 8h6v8h4v-8h6z"/>
+        </svg>
+    </div>
 </div>

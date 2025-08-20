@@ -263,7 +263,27 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
           }
         }
       }
@@ -306,10 +326,128 @@
             }
           }
         }
+      }
+    },
+    "/api/Detalle": {
+      "get": {
+        "tags": [
+          "Detalle"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
       },
+      "post": {
+        "tags": [
+          "Detalle"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DetalleCuenta"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DetalleCuenta"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DetalleCuenta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Detalle/{idCuenta}": {
+      "get": {
+        "tags": [
+          "Detalle"
+        ],
+        "parameters": [
+          {
+            "name": "idCuenta",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DetalleCuenta"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DetalleCuenta"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DetalleCuenta"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Detalle/{id}": {
       "put": {
         "tags": [
-          "Cuenta"
+          "Detalle"
         ],
         "parameters": [
           {
@@ -349,7 +487,7 @@
       },
       "delete": {
         "tags": [
-          "Cuenta"
+          "Detalle"
         ],
         "parameters": [
           {
@@ -447,6 +585,44 @@
           },
           "pagado": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetalleCuenta": {
+        "type": "object",
+        "properties": {
+          "idDetalleCuenta": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCuenta": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cuenta": {
+            "$ref": "#/components/schemas/Cuenta"
+          },
+          "idArticulo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pagado": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "detalle": {
+            "type": "string",
+            "nullable": true
+          },
+          "descuento": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
           }
         },
         "additionalProperties": false

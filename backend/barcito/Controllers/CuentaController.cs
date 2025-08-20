@@ -25,23 +25,10 @@ namespace barcito.Controllers
 
     // POST api/<CuentaController>
     [HttpPost]
-    public void PostNuevaCuenta([FromBody] Cuenta cuenta)
+    public int PostNuevaCuenta([FromBody] Cuenta cuenta)
     {
-      Console.WriteLine("Nueva cuenta recibida: " + cuenta.Nombre + cuenta.IdDevice);
       GestorDeCuentas gestorDeCuentas = new GestorDeCuentas();
-      gestorDeCuentas.CrearCuenta(cuenta);
-    }
-
-    // PUT api/<CuentaController>/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value) 
-    {
-    }
-
-    // DELETE api/<CuentaController>/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
+      return gestorDeCuentas.CrearCuenta(cuenta);
     }
   }
 }

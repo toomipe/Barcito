@@ -10,11 +10,15 @@ namespace barcito.Logica
     {
       cuentaRepo = new Persistencia.CuentaRepository();
     }
-    public void CrearCuenta(Cuenta cuentaData)
+    public int CrearCuenta(Cuenta cuentaData)
     {
       cuentaData.Fecha = DateTime.Now;
       cuentaData.Pagado = false;
-      cuentaRepo.Save(cuentaData);
+      if (cuentaRepo.NotReplicated(cuentaData.Nombre, cuentaData.IdDevice))
+      {
+        return cuentaRepo.Save(cuentaData);
+      }
+      return -1;
     }
     public Cuenta ObtenerCuentaPorId(int idCuenta)
     {
