@@ -2,15 +2,18 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace barcito.Logica
 {
   public class GestorDeCuentas
   {
     private Persistencia.CuentaRepository cuentaRepo;
+    private Persistencia.DetalleCuentaRepository detalleCuentaRepo;
     public GestorDeCuentas()
     {
       cuentaRepo = new Persistencia.CuentaRepository();
+      detalleCuentaRepo = new Persistencia.DetalleCuentaRepository();
     }
     public int CrearCuenta(Cuenta cuentaData)
     {
@@ -39,6 +42,11 @@ namespace barcito.Logica
     public Cuenta? ObtenerCuentaPorDevice(string idDevice)
     {
       return cuentaRepo.FindByDevice(idDevice);
+    }
+
+    public async Task<bool> GenerarPagoEfectivo(List<int> detalles)
+    {
+      return await detalleCuentaRepo.GenerarPagoEfectivo(detalles);
     }
 
     public async Task<string> CrearPreferencia(List<DetalleCuenta> detalles)

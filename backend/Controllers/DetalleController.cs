@@ -19,10 +19,18 @@ namespace barcito.Controllers
 
         // GET api/<DetalleCuenta>/5
         [HttpGet("{idCuenta}")]
-        public List<DetalleCuenta> Get(int idCuenta)
+        public List<DetalleCuenta> GetNoPagados(int idCuenta)
         {
             GestorDeDetalles gestorDeDetalles = new GestorDeDetalles();
-            return gestorDeDetalles.ObtenerCuentaPorId(idCuenta);
+            return gestorDeDetalles.ObtenerCuentaPorIdNoPagado(idCuenta);
+        }
+
+        // GET api/pagado/<DetalleCuenta>/5
+        [HttpGet("pagado/{idCuenta}")]
+        public List<DetalleCuenta> GetPagados(int idCuenta)
+        {
+            GestorDeDetalles gestorDeDetalles = new GestorDeDetalles();
+            return gestorDeDetalles.ObtenerDetallesPorIdPagado(idCuenta);
         }
 
         // GET api/<DetalleCuenta>

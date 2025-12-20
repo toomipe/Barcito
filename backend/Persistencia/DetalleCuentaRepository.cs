@@ -1,4 +1,5 @@
 using barcito.Logica;
+using Microsoft.Extensions.ObjectPool;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
@@ -31,7 +32,7 @@ namespace barcito.Persistencia
       miComando.Parameters.AddWithValue("@detalle", "");
       miComando.Parameters.AddWithValue("@precio", articulo.Precio * cantidad);
 
-      Console.WriteLine(QUERY);
+      // Console.WriteLine(QUERY);
       miComando.ExecuteNonQuery();
     }
         
@@ -43,7 +44,7 @@ namespace barcito.Persistencia
       miComando.Parameters.AddWithValue("@idDetalleCuenta", idDetalleCuenta);
 
       MySqlDataReader mReader = miComando.ExecuteReader();
-      DetalleCuenta detalle = null;
+      DetalleCuenta detalle = new DetalleCuenta();
 
       if (mReader.Read())
       {
@@ -55,7 +56,8 @@ namespace barcito.Persistencia
           Cantidad = mReader.GetInt32("cantidad"),
           Detalle =mReader.GetString("detalle"),
           Precio = mReader.GetDecimal("precio"),
-          Pagado = mReader.GetBoolean("pagado")
+          Pagado = mReader.GetBoolean("pagado"),
+          Estado = mReader.GetString("estado")
         };
       }
 
@@ -63,9 +65,9 @@ namespace barcito.Persistencia
       return detalle;
     }
 
-    public List<DetalleCuenta> FindAll()
+    public List<DetalleCuenta> FindAllNotPaid()
     {
-      string QUERY = "SELECT * FROM DetalleCuenta";
+      string QUERY = "SELECT * FROM DetalleCuenta WHERE pagado = 0";
       MySqlCommand miComando = new MySqlCommand(QUERY);
       miComando.Connection = conexiónMySQL.GetConnection();
 
@@ -82,7 +84,8 @@ namespace barcito.Persistencia
           Cantidad = mReader.GetInt32("cantidad"),
           Detalle = mReader.GetString("detalle"),
           Precio = mReader.GetDecimal("precio"),
-          Pagado = mReader.GetBoolean("pagado")
+          Pagado = mReader.GetBoolean("pagado"),
+          Estado = mReader.GetString("estado")
         };
         detalles.Add(detalle);
       }
@@ -129,14 +132,14 @@ namespace barcito.Persistencia
     }
 
 
-    public List<DetalleCuenta> FindByCuentaId(int idCuenta)
+    public List<DetalleCuenta> FindByCuentaIdNotPaid (int idCuenta)
     {
-      string QUERY = "SELECT * FROM detallecuenta WHERE idCuenta = @idCuenta";
+      string QUERY = "SELECT * FROM detallecuenta WHERE idCuenta = @idCuenta AND pagado = 0";
       MySqlCommand miComando = new MySqlCommand(QUERY);
       miComando.Connection = conexiónMySQL.GetConnection();
       miComando.Parameters.AddWithValue("@idCuenta", idCuenta);
 
-      Console.WriteLine(QUERY);
+      // Console.WriteLine(QUERY);
 
       MySqlDataReader mReader = miComando.ExecuteReader();
       List<DetalleCuenta> detalles = new List<DetalleCuenta>();
@@ -151,13 +154,68 @@ namespace barcito.Persistencia
           Cantidad = mReader.IsDBNull(mReader.GetOrdinal("cantidad")) ? 0 : mReader.GetInt32("cantidad"),
           Detalle = mReader.IsDBNull(mReader.GetOrdinal("detalle")) ? null : mReader.GetString("detalle"),
           Precio = mReader.IsDBNull(mReader.GetOrdinal("precio")) ? 0 : mReader.GetDecimal("precio"),
-          Pagado = mReader.IsDBNull(mReader.GetOrdinal("pagado")) ? false : mReader.GetBoolean("pagado")
+          Pagado = mReader.IsDBNull(mReader.GetOrdinal("pagado")) ? false : mReader.GetBoolean("pagado"),
+          Estado = mReader.IsDBNull(mReader.GetOrdinal("estado")) ? null : mReader.GetString("estado")
         };
         detalles.Add(detalle);
       }
 
       mReader.Close();
       return detalles;
+    }
+
+    public List<DetalleCuenta> FindByCuentaIdPaid (int idCuenta)
+    {
+      string QUERY = "SELECT * FROM detallecuenta WHERE idCuenta = @idCuenta AND pagado = 1";
+      MySqlCommand miComando = new MySqlCommand(QUERY);
+      miComando.Connection = conexiónMySQL.GetConnection();
+      miComando.Parameters.AddWithValue("@idCuenta", idCuenta);
+
+      // Console.WriteLine(QUERY);
+
+      MySqlDataReader mReader = miComando.ExecuteReader();
+      List<DetalleCuenta> detalles = new List<DetalleCuenta>();
+
+      while (mReader.Read())
+      {
+        DetalleCuenta detalle = new DetalleCuenta
+        {
+          IdDetalleCuenta = mReader.IsDBNull(mReader.GetOrdinal("idDetalleCuenta")) ? 0 : mReader.GetInt32("idDetalleCuenta"),
+          IdCuenta = mReader.IsDBNull(mReader.GetOrdinal("idCuenta")) ? 0 : mReader.GetInt32("idCuenta"),
+          IdArticulo = mReader.IsDBNull(mReader.GetOrdinal("idArticulo")) ? 0 : mReader.GetInt32("idArticulo"),
+          Cantidad = mReader.IsDBNull(mReader.GetOrdinal("cantidad")) ? 0 : mReader.GetInt32("cantidad"),
+          Detalle = mReader.IsDBNull(mReader.GetOrdinal("detalle")) ? null : mReader.GetString("detalle"),
+          Precio = mReader.IsDBNull(mReader.GetOrdinal("precio")) ? 0 : mReader.GetDecimal("precio"),
+          Pagado = mReader.IsDBNull(mReader.GetOrdinal("pagado")) ? false : mReader.GetBoolean("pagado"),
+          Estado = mReader.IsDBNull(mReader.GetOrdinal("estado")) ? null : mReader.GetString("estado")
+        };
+        detalles.Add(detalle);
+      }
+
+      mReader.Close();
+      return detalles;
+    }
+
+    public async Task<bool> GenerarPagoEfectivo(List<int> detalles)
+    {
+        int filasAfectadas = 0;
+
+        foreach (var idDetalle in detalles)
+        {
+            string QUERY = "UPDATE DetalleCuenta SET pagado = 1, estado = 'EP' WHERE idDetalleCuenta = @idDetalleCuenta";
+
+            using var miComando = new MySqlCommand(QUERY);
+            miComando.Connection = conexiónMySQL.GetConnection();
+            miComando.Parameters.AddWithValue("@idDetalleCuenta", idDetalle);
+
+            Console.WriteLine(QUERY);
+
+            Console.WriteLine("Ejecutando actualización de pago para detalle ID: " + idDetalle);
+
+            filasAfectadas += await miComando.ExecuteNonQueryAsync();
+        }
+
+        return filasAfectadas == detalles.Count;
     }
   }
 }

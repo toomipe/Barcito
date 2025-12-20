@@ -37,7 +37,7 @@ namespace barcito.Persistencia
       miComando.Parameters.AddWithValue("@idCuenta", idCuenta);
 
       MySqlDataReader mReader = miComando.ExecuteReader();
-      Cuenta cuenta = null;
+      Cuenta cuenta = new Cuenta();
 
       if (mReader.Read())
       {
@@ -194,7 +194,7 @@ namespace barcito.Persistencia
       miComando.Parameters.AddWithValue("@idDevice", idDevice);
 
       MySqlDataReader mReader = miComando.ExecuteReader();
-      Cuenta cuenta = null;
+      Cuenta cuenta = new Cuenta();
 
       if (mReader.Read())
       {

@@ -12,5 +12,6 @@ namespace barcito.Logica
     public int Cantidad { get; set; }
     public string? Detalle { get; set; }
     public decimal? Precio { get; set; }
+    public string? Estado { get; set; }
   }
 }

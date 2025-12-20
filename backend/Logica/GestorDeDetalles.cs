@@ -11,13 +11,18 @@ namespace barcito.Logica
     {
       detalleRepo.Save(idCuenta, idArticulo, cantidad);
     }
-    public List<DetalleCuenta> ObtenerCuentaPorId(int idCuenta)
+    public List<DetalleCuenta> ObtenerCuentaPorIdNoPagado(int idCuenta)
     {
-      return detalleRepo.FindByCuentaId(idCuenta);
+      return detalleRepo.FindByCuentaIdNotPaid(idCuenta);
     }
-    public List<DetalleCuenta> ObtenerTodasLasCuentas()
+
+    public List<DetalleCuenta> ObtenerDetallesPorIdPagado(int idCuenta)
     {
-      return detalleRepo.FindAll();
+      return detalleRepo.FindByCuentaIdPaid(idCuenta);
+    }
+    public List<DetalleCuenta> ObtenerTodosLosDetallesNoPagados()
+    {
+      return detalleRepo.FindAllNotPaid();
     }
     public void ActualizarDetalle(int idDetalle, string detalle, int cantidad)
     {

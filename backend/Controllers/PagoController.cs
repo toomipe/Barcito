@@ -25,6 +25,19 @@ namespace barcito.Controllers
 
             return Ok(new { url });
         }
+
+        [HttpPost("Efectivo")]
+        public async Task<IActionResult> Efectivo([FromBody] List<int> Detalles)
+        {
+            Console.WriteLine("Iniciando pago en efectivo...", Detalles);
+            if (Detalles == null)
+                return BadRequest("No hay detalles para pagar");
+
+            await _mp.GenerarPagoEfectivo(Detalles);
+
+            return Ok();
+        }
+
     }
 
     [ApiController]
