@@ -1,0 +1,76 @@
+<div class="empleados-crud container">
+  <h2>Cuentas por Mesas</h2>
+
+  <div class="mesas-grid">
+    <div *ngFor="let c of pedidos" class="mesa-card" [class.mesa-pendiente]="tienePendientes(c)"
+      [class.mesa-ok]="!tienePendientes(c)">
+      <div class="mesa-numero">
+        Mesa {{ c[0].idCuenta }}
+      </div>
+
+      <div class="mesa-cliente">
+        {{ c[0].nombre }}
+      </div>
+
+      <div class="mesa-total">
+        {{ getTotalCuenta(c) | currency }}
+      </div>
+
+      <button class="ver-detalle-btn" (click)="abrirDetalles(c)">
+        Ver detalles
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL DETALLES -->
+  <div class="modal-backdrop" *ngIf="mesaSeleccionada">
+    <div class="modal">
+      <h3>Mesa {{ mesaSeleccionada[0].mesa == 0 ? mesaSeleccionada[0].mesa :'No definida' }} – {{
+        mesaSeleccionada[0].nombre }}</h3>
+
+      <table class="empleados-table">
+        <thead>
+          <tr>
+            <th>Artículo</th>
+            <th>Cant.</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Pagado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let d of mesaSeleccionada">
+            <td>{{ d.nombreArticulo }}</td>
+            <td>{{ d.cantidad }}</td>
+            <td>{{ d.precio | currency }}</td>
+            <td>{{ d.estado }}</td>
+            <td>{{ d.pagado ? 'Pagado' : 'No pagado'}}</td>
+
+            <td *ngIf="d.estado === 'PE'" class="actions-button">
+              <button (click)="marcarListo(d)" class="actions">✔ Entregado</button>
+              <button (click)="marcarCocina(d)" class="actions">↩ Cocina</button>
+            </td>
+
+            <td *ngIf="d.estado === 'EP'" class="actions-button">
+              <button (click)="marcarListoPreparado(d)" class="actions">✔ Para entregar</button>
+            </td>
+
+            <td *ngIf="d.estado === 'DC'" class="actions-button">
+              <button (click)="marcarListoPreparado(d)" class="actions">✔ Para entregar</button>
+            </td>
+
+            <td *ngIf="d.estado === 'E'" class="actions-button">
+              <span>Entregado</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="modal-actions">
+        <button (click)="cerrarDetalles()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

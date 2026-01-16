@@ -84,12 +84,22 @@ namespace barcito.Persistencia
 
     public bool NotReplicated(string nombre, string device)
     {
-      string QUERY = "SELECT * FROM Cuenta WHERE nombre = '" + nombre + "' AND idDevice = '" + device + "' ";
-      Console.WriteLine(QUERY);
+      string QUERY = @"
+          SELECT *
+          FROM Cuenta
+          WHERE nombre = @nombre
+            AND idDevice = @device
+            AND fecha >= @fecha";
+
       MySqlCommand miComando = new MySqlCommand(QUERY);
       miComando.Connection = conexiónMySQL.GetConnection();
 
+      miComando.Parameters.AddWithValue("@nombre", nombre);
+      miComando.Parameters.AddWithValue("@device", device);
+      miComando.Parameters.AddWithValue("@fecha", DateTime.Now.Date);
+
       MySqlDataReader mReader = miComando.ExecuteReader();
+
       List<Cuenta> cuentas = new List<Cuenta>();
 
       while (mReader.Read())
@@ -100,7 +110,8 @@ namespace barcito.Persistencia
           Nombre = mReader.GetString("nombre"),
           Fecha = mReader.GetDateTime("fecha"),
           IdDevice = mReader.GetString("idDevice"),
-          Pagado = mReader.GetInt32("pagado") == 1
+          Pagado = mReader.GetInt32("pagado") == 1,
+          Mesa = mReader.GetInt32("mesa")
         };
         cuentas.Add(cuenta);
       }

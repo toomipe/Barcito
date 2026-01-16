@@ -38,6 +38,30 @@ namespace barcito.Logica
     {
       return cuentaRepo.FindIdByNombreYDispositivo(nombre, idDevice);
     }
+
+    public string ObtenerCuentaYTotales()
+    {
+      var cuentas = cuentaRepo.FindAll();
+      
+      var result = cuentas.Select(cuenta => new
+      {
+        cuenta = new
+        {
+          cuenta.IdCuenta,
+          cuenta.Nombre,
+          cuenta.IdDevice,
+          cuenta.Fecha,
+          cuenta.Pagado,
+          cuenta.Mesa
+        },
+        totales = new
+        {
+          total = detalleCuentaRepo.FindByCuentaId(cuenta.IdCuenta).Sum(d => d.Precio)
+        }
+      }).ToList();
+
+      return JsonSerializer.Serialize(result);
+    }
     
     public Cuenta? ObtenerCuentaPorDevice(string idDevice)
     {
@@ -80,9 +104,9 @@ namespace barcito.Logica
         items,
         back_urls = new
         {
-          success = "https://4134zb58-4200.brs.devtunnels.ms/pagado",
-          failure = "https://4134zb58-4200.brs.devtunnels.ms/pagado",
-          pending = "https://4134zb58-4200.brs.devtunnels.ms/pagado"
+          success = "https://4134zb58-4200.brs.devtunnels.ms/pagado/success",
+          failure = "https://4134zb58-4200.brs.devtunnels.ms/pagado/failure",
+          pending = "https://4134zb58-4200.brs.devtunnels.ms/pagado/pending"
         },
         auto_return = "approved",
         notification_url = "https://4134zb58-5196.brs.devtunnels.ms/api/pagos/webhook"
@@ -106,5 +130,9 @@ namespace barcito.Logica
       return doc.RootElement.GetProperty("init_point").GetString()!;
     }
 
+    internal object? MarcarPagado(int idCuenta)
+    {
+      return detalleCuentaRepo.MarkAsPaid(idCuenta);
+    }
   }
 }

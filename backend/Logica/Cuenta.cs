@@ -7,6 +7,7 @@ namespace barcito.Logica
     public DateTime Fecha { get; set; }
     public string IdDevice { get; set; } = null!;
     public bool Pagado { get; set; } = true;  
+    public int? Mesa { get; set; }
   }
 
 }

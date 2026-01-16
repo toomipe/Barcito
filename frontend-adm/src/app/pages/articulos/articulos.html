@@ -1,0 +1,111 @@
+<div class="empleados-crud container">
+  <h2>Gestión de Artículos</h2>
+
+  <div class="actions">
+    <input
+      type="text"
+      placeholder="Buscar por nombre, descripción o categoría"
+      [(ngModel)]="filter"
+      (ngModelChange)="applyFilter()"
+    />
+    <button (click)="newArticulo()">Nuevo artículo</button>
+  </div>
+
+  <table class="empleados-table" *ngIf="articulos && articulos.length; else emptyList">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Categoría</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of articulosFiltered">
+        <td>{{ a.articuloID }}</td>
+        <td>{{ a.nombre }}</td>
+        <td>{{ a.precio | currency }}</td>
+        <td>{{ a.categoria?.nombre ?? ''}}</td>
+        <td>
+          <img *ngIf="a.urlImagen" [src]="a.urlImagen" width="40" />
+        </td>
+        <td>
+          <button (click)="editArticulo(a)">Editar</button>
+          <button (click)="confirmDelete(a)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #emptyList>
+    <p>No hay artículos registrados.</p>
+  </ng-template>
+
+  <!-- FORM -->
+  <div class="empleado-form" *ngIf="selectedArticulo">
+    <h3>{{ isEditing ? 'Editar artículo' : 'Nuevo artículo' }}</h3>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <form #articuloForm="ngForm" (ngSubmit)="saveArticulo()">
+
+      <div>
+        <label>Nombre</label>
+        <input name="nombre" required [(ngModel)]="selectedArticulo.nombre" />
+      </div>
+
+      <div>
+        <label>Descripción</label>
+        <textarea name="descripcion" [(ngModel)]="selectedArticulo.descripcion"></textarea>
+      </div>
+
+      <div>
+        <label>Precio</label>
+        <input type="number" name="precio" required [(ngModel)]="selectedArticulo.precio" />
+      </div>
+
+      <div>
+        <label>URL Imagen</label>
+        <input name="urlImagen" [(ngModel)]="selectedArticulo.urlImagen" />
+      </div>
+
+      <div>
+        <label>Categoría</label>
+        <select
+          name="categoriaID"
+          required
+          [(ngModel)]="selectedArticulo.categoriaID"
+        >
+          <option value="" disabled>Seleccionar categoría</option>
+          <option
+            *ngFor="let c of categorias"
+            [ngValue]="c.categoriaID"
+          >
+            {{ c.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="articuloForm.invalid">
+          {{ isEditing ? 'Actualizar' : 'Crear' }}
+        </button>
+        <button type="button" (click)="cancel()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- CONFIRM DELETE -->
+  <div class="confirm-delete" *ngIf="toDeleteArticulo">
+    <p>
+      ¿Eliminar <strong>{{ toDeleteArticulo.nombre }}</strong>?
+    </p>
+    <button (click)="deleteArticulo(toDeleteArticulo)">Sí, eliminar</button>
+    <button (click)="toDeleteArticulo = null">No</button>
+  </div>
+</div>

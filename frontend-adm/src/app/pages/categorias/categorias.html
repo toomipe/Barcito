@@ -1,0 +1,80 @@
+<div class="empleados-crud container">
+  <h2>Gestión de Categorías</h2>
+
+  <div class="actions">
+    <input
+      type="text"
+      placeholder="Buscar por nombre"
+      [(ngModel)]="filter"
+      (ngModelChange)="applyFilter()"
+    />
+    <button (click)="newCategoria()">Nueva categoría</button>
+  </div>
+
+  <table class="empleados-table" *ngIf="categorias && categorias.length; else emptyList">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of categoriasFiltered">
+        <td>{{ c.categoriaID }}</td>
+        <td>{{ c.nombre }}</td>
+        <td>
+          <img *ngIf="c.urlImagen" [src]="c.urlImagen" width="40" />
+        </td>
+        <td>
+          <button (click)="editCategoria(c)">Editar</button>
+          <button (click)="confirmDelete(c)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #emptyList>
+    <p>No hay categorías registradas.</p>
+  </ng-template>
+
+  <!-- FORM -->
+  <div class="empleado-form" *ngIf="selectedCategoria">
+    <h3>{{ isEditing ? 'Editar categoría' : 'Nueva categoría' }}</h3>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <form #categoriaForm="ngForm" (ngSubmit)="saveCategoria()">
+
+      <div>
+        <label>Nombre</label>
+        <input name="nombre" required [(ngModel)]="selectedCategoria.nombre" />
+      </div>
+
+      <div>
+        <label>URL Imagen</label>
+        <input name="urlImagen" [(ngModel)]="selectedCategoria.urlImagen" />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="categoriaForm.invalid">
+          {{ isEditing ? 'Actualizar' : 'Crear' }}
+        </button>
+        <button type="button" (click)="cancel()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- CONFIRM DELETE -->
+  <div class="confirm-delete" *ngIf="toDeleteCategoria">
+    <p>
+      ¿Eliminar <strong>{{ toDeleteCategoria.nombre }}</strong>?
+    </p>
+    <button (click)="deleteCategoria(toDeleteCategoria)">Sí, eliminar</button>
+    <button (click)="toDeleteCategoria = null">No</button>
+  </div>
+</div>

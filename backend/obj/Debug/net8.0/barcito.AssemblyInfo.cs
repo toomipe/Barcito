@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("barcito")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc51448efae51ea30ec059696b9bfc5af4f5f91f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce558117f47d81fe36b36e7f1bfe96c3e6db6e95")]
 [assembly: System.Reflection.AssemblyProductAttribute("barcito")]
 [assembly: System.Reflection.AssemblyTitleAttribute("barcito")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

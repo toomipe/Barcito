@@ -1,1 +1,63 @@
-<p>header works!</p>
+<header>
+  <nav class="navbar">
+    <div (click)="navegar('')" class="home">
+      <h1 class="logo">Tu barcito - Gestión</h1>
+    </div>
+
+    <ul class="menu">
+      <li class="item">
+        <span>Configuración</span>
+        <ul class="submenu">
+          <li><a (click)="navegar('categorias')">Categorías</a></li>
+          <li><a (click)="navegar('articulos')">Artículos</a></li>
+          <li><a (click)="navegar('promociones')">Promociones</a></li>
+          <li><a (click)="navegar('banners')">Banners y Anuncios</a></li>
+        </ul>
+      </li>
+
+      <li class="item">
+        <span>Cuentas</span>
+        <ul class="submenu">
+          <li><a (click)="navegar('cuentas/nuevo')">Nueva cuenta manual</a></li>
+          <li><a (click)="navegar('cuentas')">Listado de cuentas</a></li>
+          <li><a (click)="navegar('cuentas/mesas')">Cuentas por Mesas</a></li>
+        </ul>
+      </li>
+
+      <li class="item">
+        <span>Pedidos</span>
+        <ul class="submenu">
+          <li><a (click)="navegar('pedidos/cocina')">En Preparación</a></li>
+          <li><a (click)="navegar('pedidos/entrega')">Para Entregar</a></li>
+        </ul>
+      </li>
+
+      <li class="item">
+        <span>Stock</span>
+        <ul class="submenu">
+          <li><a (click)="navegar('listadoStock')">Listado</a></li>
+          <li><a (click)="navegar('Movimiento')">Movimiento</a></li>
+          <li><a (click)="navegar('productos')">Productos</a></li>
+        </ul>
+      </li>
+
+      <li class="item">
+        <span>Reportes</span>
+        <ul class="submenu">
+          <li><a (click)="navegar('reportes/alquileres')">Alquileres por Cliente</a></li>
+          <li><a (click)="navegar('reportes/vehiculos')">Vehículos más alquilados</a></li>
+          <li><a (click)="navegar('reportes/periodo')">Alquileres por Período</a></li>
+          <li><a (click)="navegar('reportes/facturacion')">Facturación Mensual</a></li>
+        </ul>
+      </li>
+
+      <li class="item">
+        <span>Seguridad</span>
+        <ul class="submenu">
+          <li><a (click)="navegar('seguridad')">Usuarios</a></li>
+          <li><a (click)="navegar('login')">Cerrar Sesión</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>

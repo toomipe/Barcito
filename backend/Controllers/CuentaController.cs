@@ -56,6 +56,26 @@ namespace barcito.Controllers
       return Ok(idCuenta);
     }
 
+    [HttpGet("cuentaYtotales")]
+    public ActionResult<string> GetCuentaYTotales()
+    {
+      GestorDeCuentas gestorDeCuentas = new GestorDeCuentas();
+
+      var cuentaYTotales = gestorDeCuentas.ObtenerCuentaYTotales();
+
+      if (cuentaYTotales == null)
+        return NotFound();
+
+      return Ok(cuentaYTotales);
+    }
+
+    [HttpPut("marcarPagado/{idCuenta}")]
+    public ActionResult<bool> MarcarPagado(int idCuenta)
+    {
+      GestorDeCuentas gestorDeCuentas = new GestorDeCuentas();
+      return Ok(gestorDeCuentas.MarcarPagado(idCuenta));
+    }
+
     /*
     // POST api/<CuentaController>
     [HttpPost]

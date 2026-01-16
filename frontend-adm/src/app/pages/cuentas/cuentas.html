@@ -1,0 +1,108 @@
+<div class="empleados-crud container">
+    <h2>Cuentas</h2>
+
+    <div class="actions">
+        <input type="text" placeholder="Buscar por nombre o dispositivo" [(ngModel)]="filter"
+            (ngModelChange)="applyFilter()" />
+        <label>Todas: </label>
+        <input type="checkbox" id="mostrar-pagadas" placeholder="mostrar-pagadas" [(ngModel)]="mostrarPagadas" 
+            (ngModelChange)="applyFilterPagadas()" />
+    </div>
+
+    <table class="empleados-table" *ngIf="cuentasFiltered.length; else emptyList">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let c of cuentasFiltered">
+                <td>{{ c.cuenta.IdCuenta }}</td>
+                <td>{{ c.cuenta.Nombre }}</td>
+                <td>{{ c.cuenta.Fecha | date:'short' }}</td>
+                <td>{{ c.totales.total | currency }}</td>
+                <td>
+                    <span [class.pagado]="c.cuenta.Pagado">
+                        {{ c.cuenta.Pagado ? '✔️ Pagado' : '⏳ Pendiente' }}
+                    </span>
+                </td>
+                <td>
+                    <button (click)="verDetalles(c)">Detalles</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal-backdrop" *ngIf="showDetalle">
+        <div class="modal">
+            <h3>Detalle de Cuenta #{{ cuentaSeleccionada }} de {{ nombreCuenta }}</h3>
+
+            <div *ngIf="loadingDetalle">Cargando...</div>
+
+            <table *ngIf="!loadingDetalle && detalles.length">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" [(ngModel)]="checkAll" (change)="toggleAll()">
+                            Todo
+                        </th>
+                        <th>Artículo</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                        <th>Estado</th>
+                        <th>Detalle</th>
+                        <th>Forma de Pago</th>
+                        <th>Pagado</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let d of detalles">
+                        <td>
+                            <input *ngIf="!d.pagado" type="checkbox" [(ngModel)]="d.selected" (change)="toggleItem()"
+                                [disabled]="d.pagado">
+                        </td>
+                        <td>{{ d.nombreArticulo }}</td>
+                        <td>{{ d.cantidad }}</td>
+                        <td>{{ d.precio | currency }}</td>
+                        <td>{{ d.cantidad * d.precio | currency }}</td>
+                        <td>{{ d.estado }}</td>
+                        <td>{{ d.detalleArticulo || '-' }}</td>
+                        <td>{{ d.formaDePago ? 'Mercado Pago' : 'Efectivo' }}</td>
+                        <td>{{ d.pagado ? 'Pagado' : 'Sin Pagar' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p *ngIf="!loadingDetalle && !detalles.length">
+                No hay detalles para esta cuenta.
+            </p>
+
+            <div *ngIf="detalles.length" style="margin-top: 10px;">
+                <strong>A pagar:</strong>
+                {{ totalSeleccionado | currency }}
+            </div>
+
+            <div class="modal-actions">
+                <button (click)="marcarPagado()" [disabled]="!idsSeleccionados.length">
+                    Marcar pagado
+                </button>
+
+                <button (click)="cerrarDetalle()">Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <ng-template #emptyList>
+        <p>No hay cuentas registradas.</p>
+    </ng-template>
+</div>

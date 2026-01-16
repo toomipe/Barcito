@@ -1,0 +1,42 @@
+<div class="empleados-crud container">
+    <h2>Pedidos para Entregar</h2>
+
+    <div *ngIf="loading">Cargando pedidos...</div>
+
+    <table *ngIf="!loading && pedidos.length; else empty">
+        <thead>
+            <tr>
+                <th>Cant.</th>
+                <th>Artículo</th>
+                <th>Descripción</th>
+                <th>Detalle</th>
+                <th>Acción</th>
+                <th>Cuenta - Mesa</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let p of pedidos">
+                <td>{{ p.cantidad }}</td>
+                <td>{{ p.nombreArticulo || '—' }}</td>
+                <td>{{ p.descripcionArticulo || '—' }}</td>
+                <td class="detalle-detalle">{{ p.detalle }}</td>
+                <td>
+                    <div class="modal-actions">
+                        <button id="actions-C" (click)="marcarCocina(p)">
+                            Vuelve a Cocina
+                        </button>
+                        <button id="actions" (click)="marcarListo(p)">
+                            Marcar Entregado
+                        </button>
+                    </div>
+                </td>
+                <td>{{ p.nombre }} - {{ p.mesa }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #empty>
+        <p>No hay pedidos en preparación.</p>
+    </ng-template>
+</div>

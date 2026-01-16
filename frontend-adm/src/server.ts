@@ -13,19 +13,6 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 /**
- * Define los parámetros para prerendering de rutas dinámicas.
- * Cada objeto representa un set de parámetros que Angular usará
- * para generar la ruta estática durante prerender.
- */
-export function getPrerenderParams() {
-  return [
-    { categoriaID: '1' },
-    { categoriaID: '2' },
-    { categoriaID: '3' } // agregá más IDs según tus categorías
-  ];
-}
-
-/**
  * Example Express Rest API endpoints can be defined here.
  * Uncomment and define endpoints as necessary.
  *
